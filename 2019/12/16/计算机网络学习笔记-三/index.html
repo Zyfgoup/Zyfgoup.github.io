@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="看计算机网络教材(计算机网络 第七版 谢希仁 著)的笔记 数据链路层使用的信道主要有以下两种类型： 1.点对点信道 2.广播信道 链路是从一个结点到相邻节点的一段物理线路（有线和无线） 两台计算机之间的通信路径往往要经过许多段这样的路径 可见链路是一条路径的组成部分 数据链路：当需要在一条线路上传输数据时 除了必须有一条物理线路以外 还必须有一些必要的通信协议来控制这些数据的传输 若把这些协议的软">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络学习笔记(三)">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;16&#x2F;%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%B8%89&#x2F;index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="看计算机网络教材(计算机网络 第七版 谢希仁 著)的笔记 数据链路层使用的信道主要有以下两种类型： 1.点对点信道 2.广播信道 链路是从一个结点到相邻节点的一段物理线路（有线和无线） 两台计算机之间的通信路径往往要经过许多段这样的路径 可见链路是一条路径的组成部分 数据链路：当需要在一条线路上传输数据时 除了必须有一条物理线路以外 还必须有一些必要的通信协议来控制这些数据的传输 若把这些协议的软">
+<meta property="article:published_time" content="2019-12-16T13:01:54.000Z">
+<meta property="article:modified_time" content="2019-12-16T13:09:45.335Z">
+<meta property="article:author" content="Zyfgoup">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/12/16/计算机网络学习笔记-三/"/>
+
+
+
+
+
+  <title>计算机网络学习笔记(三) | Hexo</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.1.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%B8%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zyfgoup">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://s2.ax1x.com/2019/12/16/Q4NvnI.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">计算机网络学习笔记(三)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-16T21:01:54+08:00">
+                2019-12-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机网络</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>  阅读数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,040 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  10 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>看计算机网络教材(计算机网络 第七版 谢希仁 著)的笔记</p>
+<p>数据链路层使用的信道主要有以下两种类型：</p>
+<p>1.点对点信道</p>
+<p>2.广播信道</p>
+<p>链路是从一个结点到相邻节点的一段物理线路（有线和无线） 两台计算机之间的通信路径往往要经过许多段这样的路径 可见链路是一条路径的组成部分</p>
+<p>数据链路：当需要在一条线路上传输数据时 除了必须有一条物理线路以外 还必须有一些必要的通信协议来控制这些数据的传输 若把这些协议的软件、硬件都加到链路上 构成了数据链路</p>
+<p>点对点信道的数据链路层的协议数据单元–帧</p>
+<p><strong>点对点信道的数据链路层在进行通信时的主要步骤如下：</strong></p>
+<p>1.节点A的数据里哪路层把网络层交下来的IP数据报添加首部和尾部 封装成帧</p>
+<p>2.结点A把封装好的帧发送给结点B的数据链路层（<strong>简化</strong> <strong>看成对等层</strong>）</p>
+<p>3.若结点B的数据链路层收到的帧无差错 则从帧中提取出IP数据报交给上面的网络层否则丢弃这个帧</p>
+<p><strong>数据链路层的协议的基本三个问题：</strong></p>
+<p>1.封装成帧 </p>
+<p>在一段数据的前后加上首部和尾部 构成一个帧，首部和尾部的一个重要作用就是帧定界 此外还包括一些必要的控制信息</p>
+<p>帧定界可以使用特殊的帧定界符来检测收到的是否是一个完整的帧（SOH EOT 控制字符的名称）</p>
+<p>2.透明传输 </p>
+<p>由于指定控制字符，所以传输的数据中不能有与控制字符一样的比特编码 否则会出现一些错误地判断（例如提前以为到了帧结束）</p>
+<p>为了解决该问题就需要在<strong>数据中</strong>可能出现与控制字符一样的比特编码前加入一个转义字符“ESC“，如果转义字符也出现在数据中，那么就再加入一个转义字符，在接收端减去一个即可（或把转义字符去掉） 这种方法称为字节填充或者是字符填充</p>
+<p>3.差错检测</p>
+<p>比特在传输中可能产生差错 1变成0 0变成1 </p>
+<p>目前在数据链路层广泛使用了循环冗余检验CRC的检测技术</p>
+<p>通过一些运算得到一个冗余码 也叫帧检测序列FCS 若发送的数据时M=101001 ，那么通过算法计算后的FCS为001 那么加在数据的后面则为 101001001的（n+k）位数据 就是要发送的帧</p>
+<p>需要注意的是 CRC差错检测技术只能保证 无差错接收 凡是接收端接收的帧 都能非常接近1的概率认为是没有差错的 有差错的帧虽然收到了 但是都被丢弃了 </p>
+<p>比特差错是传输差错的一种 CRC只能保证解决比特差错 ，而对于帧丢失、帧重复、帧失序等的传输传错无法解决，因为现在并<strong>没有要求</strong>数据链路层向网络层提供<strong>可靠传输服务</strong>（所谓可靠传输就是数据链路层的发送端发送什么 在接收端就接受到什么）</p>
+<p>而以往的OSI7层模型要求数据链路层提供可靠传输服务，则需要在CRC检错的基础上，增加了帧编号、确认、重传机制，在历史中这种方法起到了很好的作用 但现在通信线路的质量已经大大提高 所以</p>
+<p>1.对于通信质量良好的不适用确认和重传机制 即不提供可靠传输服务</p>
+<p>2.对于通信质量较差的无线传输服务 仍使用确认 重传机制 提供可靠传输服务</p>
+<p>实践证明 这样能够提高通信效率</p>
+<p>点对点协议PPP（目前使用最广泛地数据链路层协议）（能实现可靠传输的HDLC协议现在已经很少用了）</p>
+<p>PPP协议的组成：</p>
+<p>1.一个将IP数据报封装到串行链路的方法</p>
+<p>2.一个用来建立、配置和测试数据链路连接的链路控制协议LCP</p>
+<p>3.一套网络控制协议NCP 其中每一个协议支持不同的网络层协议</p>
+<p><strong>广播信道</strong>（局域网使用的就是广播信道）</p>
+<p>局域网的特点：网络为一个单位所拥有，且地理位置和站点的数据均有限</p>
+<p>局域网主要优点：</p>
+<p>1.具有广播功能：从一个站点可方便的访问全网 局域网上的主机可共享连接在局域网上的各种硬件和软件资源</p>
+<p>2.便于系统的扩展和逐渐演变 各设备的位置可灵活调整和改变</p>
+<p>3.提高了系统的可靠性、可用性、生存性</p>
+<p>（以太网几乎成为了局域网的同义词）</p>
+<p>局域网的工作层次跨越了数据链路层和物理层</p>
+<p>共享信道是如何让众多用户合理方便的共享通新媒体资源：</p>
+<p>1.静态划分信道 通过 频分复用 时分复用 波分复用等 但是代价较高 不适合局域网</p>
+<p>2.动态媒体接入 （多点接入）：</p>
+<p>随机接入：所有用户可随机地发送信息 但如果恰巧有两个或更多的用户在同一刻发送信息 就会产生碰撞 因此必须有解决碰撞的网络协议（<strong>重点讨论</strong>）</p>
+<p>受控接入：用户不能随机地发送信息 而必须服从一定的控制</p>
+<p>以太网的两个标准：</p>
+<p>DIX Ethernet V2 和 IEEE的 802.3 只有很小的差别 因此也把802.3局域网称为以太网 但严格上讲以太网应该指符合DIX Ethernet V2标准的局域网</p>
+<p>数据链路层拆成两个子层：</p>
+<p>1.逻辑链路控制LLC （与传输媒体无关）</p>
+<p>2.媒体接入控制MAC(与接入和传输媒体有关的内容都放在MAC子层)</p>
+<p>适配器的作用：</p>
+<p>计算机与外界局域网的连接是通过通信适配器进行的，在通信适配器上装有处理器和存储器（RAM和ROM） 计算机的硬件地址就在适配器的ROM（存储器）中 而计算机的软件地址 IP地址在计算机的存储器中</p>
+<p><strong>总线网</strong></p>
+<p>CSMA/CD协议（载波监听多点接入/碰撞检测）</p>
+<p>最早的以太网是采用总线连接，当一台计算机发送数据时，总线上的所有计算机都能检测到这个数据，这就是广播通信方式，如果要实现总线上的一对一通信，可以使每一台计算机的适配器拥有一个与其他适配器不同的地址 ，发送数据帧时在帧首部写明接收站的地址，当目的地址与适配器地址一致时，该适配器就接收这个数据帧</p>
+<p>为了通信的简便，以太网采取了以下措施</p>
+<p>1.采用灵活的无连接的工作方式，对发送的帧不进行编号，也不要求对方发回确认帧，这样以太网工作起来非常方便，且局域网信道质量很好，因此以太网提供的服务是尽最大的努力的交付 即不可靠的交付（只使用CRC检错），对有差错的帧是否需要重传由高层来决定，如果要重传的话，以太网并不知道这是重传帧，而是当做新的帧来发送</p>
+<p>在总线上 同一时间只能允许一台计算机发送数据，而采取CSMA/CD来冲突发生的概率</p>
+<p>2.以太网发送的信号都采用曼彻斯特编码</p>
+<p>CSMA/CD协议的要点：</p>
+<p>1.多点接入 说明这是总线型网络 许多计算机以多点接入的方式连接在一根总线上</p>
+<p>2.载波监听 实质为检测信道 <strong>不管在发送前还是发送中</strong> <strong>每个站都必须不同的检测信道</strong></p>
+<p>3.碰撞检测 边发送边监听</p>
+<p>电磁波在1km电缆上的传播时延为5微秒（A向B发送数据 在5微秒后B才能收到），在局域网的分析中常把单程端到端传播时延记为x（不知道怎么打出的符号,用x代替） </p>
+<p>要知道是否自己发送的数据发生了碰撞的时间最多为两倍总线端到端的传播时延（2x）</p>
+<p>显然一个站不可能同时进行发送和接收（但必须边发送边监听） 所以使用CSMA/CD协议的以太网不可能进行全双工通信而只能进行双向交替通信（半双工通信）</p>
+<p>由图可见 每一个站在自己发送数据之后的一小段时间内 存在着遭遇碰撞的可能性</p>
+<p>在A发送数据帧后最多2x的时间就可知发送的数据帧是否遭受了碰撞 所以也称2x为<strong>争用期，</strong>经过争用期还没有检测到碰撞才能肯定这次发送不会发生碰撞</p>
+<p>截断二进制指数退避算法来确定碰撞后重传的时机：</p>
+<p>1.协议规定了基本退避时间为争用期2x 具体的争用期时间是51.2微秒 对于10Mbit/s以太网 在争用期内可以发送512bit 即 64字节 </p>
+<p>2.从离散的整数集合[0,1,….(2^k-1)]中随机取一个数 记为r 重传应该推后的时间为r倍的争用期</p>
+<p>​                   k = min[重传次数，10]；</p>
+<p>可见重传次数不超过10时 k等于重传次数 </p>
+<p>超过10时 k=10</p>
+<p>重传到16次仍为成功 则丢弃该帧 向高层报告</p>
+<p>如果某个站发送了一个很短的帧，在帧发送完后并未没有收到冲突通知（因为每一个比特都需要在信道中传输 也是需要时间的 当跑的时间长于帧发送出去的时间 那么站就认为全部发出去而且没有冲突返回 要检测要冲突实际是要一个帧的数据在发送过程中就能检测到冲突，意味着前面有些数据在信道中传输，而该帧也还没全部发送出去，然后在前面传输的数据碰撞了 返回告诉发送站 所以根据争用期 那么最小帧长应该为64字节），而帧在传输过程中发生了碰撞，接收到该帧的站把它丢弃 但是原来的站并不知道，因此不会重传这个帧</p>
+<p>以太网规定了一个最短帧长为64字节 如果发送的数据非常少 则加入填充字节</p>
+<p>所以如果发生碰撞 就一定是在发送的前64字节之内，由于检测到冲突就停止发送，那么已发送出去的一定小于64,因此 凡长度小于64字节的帧都是由于冲突而异常终止的无效帧 丢弃</p>
+<p>强化碰撞：当发送数据的站一旦发现了碰撞 除了立即停止发送数据外 还要继续发送32比特或者48比特的人为干扰信号，以便让所有用户都知道发生了碰撞</p>
+<p>以太网还规定了最小帧间间隔为9.6微秒 相当于96比特时间，为了使刚刚收到数据帧的站的接收缓存来得及清理 做好接收下一帧的准备</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%BA%8C/" rel="next" title="计算机网络学习笔记(二)">
+                <i class="fa fa-chevron-left"></i> 计算机网络学习笔记(二)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%9B%9B/" rel="prev" title="计算机网络学习笔记(四)">
+                计算机网络学习笔记(四) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+						<a href="/">
+              <img class="site-author-image" itemprop="image"
+                src="https://s2.ax1x.com/2019/12/16/Q4NvnI.jpg"
+                alt="Zyfgoup" />
+								</a>
+            
+              <p class="site-author-name" itemprop="name">Zyfgoup</p>
+              <p class="site-description motion-element" itemprop="description">满船清梦压星河</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Zyfgoup" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zyfgoup</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      访问总量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

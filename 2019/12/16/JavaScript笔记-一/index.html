@@ -1,0 +1,1559 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Number数值型对象  String字符型对象  Boolean布尔型对象  undefined未定义的值  null空值  声明变量 var xxx  声明变量时没有给定值 其值为undefined 不是null    使用String（）或者Number()函数进行转换  或者通过变量调用toString()或者valueOf()  var value &#x3D; 2015;       str_">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript笔记(一)">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;16&#x2F;JavaScript%E7%AC%94%E8%AE%B0-%E4%B8%80&#x2F;index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Number数值型对象  String字符型对象  Boolean布尔型对象  undefined未定义的值  null空值  声明变量 var xxx  声明变量时没有给定值 其值为undefined 不是null    使用String（）或者Number()函数进行转换  或者通过变量调用toString()或者valueOf()  var value &#x3D; 2015;       str_">
+<meta property="article:published_time" content="2019-12-16T13:23:13.000Z">
+<meta property="article:modified_time" content="2019-12-16T13:40:04.194Z">
+<meta property="article:author" content="Zyfgoup">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/12/16/JavaScript笔记-一/"/>
+
+
+
+
+
+  <title>JavaScript笔记(一) | Hexo</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.1.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/16/JavaScript%E7%AC%94%E8%AE%B0-%E4%B8%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zyfgoup">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://s2.ax1x.com/2019/12/16/Q4NvnI.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JavaScript笔记(一)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-16T21:23:13+08:00">
+                2019-12-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>  阅读数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,993 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  9 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li><p>Number数值型对象</p>
+</li>
+<li><p>String字符型对象</p>
+</li>
+<li><p>Boolean布尔型对象</p>
+</li>
+<li><p>undefined未定义的值</p>
+</li>
+<li><p>null空值</p>
+</li>
+<li><p>声明变量 var xxx</p>
+</li>
+<li><p>声明变量时没有给定值 其值为undefined 不是null</p>
+</li>
+<li></li>
+<li></li>
+<li><p>使用String（）或者Number()函数进行转换</p>
+</li>
+<li><p>或者通过变量调用toString()或者valueOf()</p>
+</li>
+<li><p>var value = 2015;     </p>
+</li>
+<li><p>str_value =   String(value)    //数值=&gt;字符串</p>
+</li>
+<li><p>或者   </p>
+</li>
+<li><p>str_value  = value.toString();    </p>
+</li>
+<li><p>str_value_2 = value.toString(2);//转换为2进制</p>
+</li>
+<li><p>str = “2015”;  </p>
+</li>
+<li><p>var number =     Number    (str);        //    字符串    =&gt;    数值  </p>
+</li>
+<li><p>var number = str.valueOf();  </p>
+</li>
+<li><p>或者   </p>
+</li>
+<li><p>var number = str – 0;          //    隐式转换  </p>
+</li>
+<li></li>
+<li></li>
+<li><p>​     var sum = 42;  </p>
+</li>
+<li><p>​    alert    (“The Sum is :” + sum + “\n”);     提示框  </p>
+</li>
+<li><p>​    var     answer     =     confirm    (“    是否下载    ?”);     //    弹出确实     取消的框  </p>
+</li>
+<li><p>​    alert(“    你的选择是    “ +     answer    );  </p>
+</li>
+<li><p>​    name     =     prompt    (“What is your name?”, “    默认值    “);    //    弹出一个输入框  </p>
+</li>
+<li><p>​    window.alert(“    你的名字是    “ +     name    );  </p>
+</li>
+<li></li>
+<li><p>var sum = 42;  </p>
+</li>
+<li><p>​    alert    (“The Sum is :” + sum + “\n”);  </p>
+</li>
+<li><p>​    var     answer     =     confirm    (“    是否下载    ?”);  </p>
+</li>
+<li><p>​    alert(“    你的选择是    “ +     answer    );  </p>
+</li>
+<li><p>​    name     =     prompt    (“What is your name?”, “    默认值    “);  </p>
+</li>
+<li><p>​    window.alert(“    你的名字是    “ +     name    );  </p>
+</li>
+<li></li>
+<li><p>var sum = 42;  </p>
+</li>
+<li><p>​    alert    (“The Sum is :” + sum + “\n”);  </p>
+</li>
+<li><p>​    var     answer     =     confirm    (“    是否下载    ?”);  </p>
+</li>
+<li><p>​    alert(“    你的选择是    “ +     answer    );  </p>
+</li>
+<li><p>​    name     =     prompt    (“What is your name?”, “    默认值    “);  </p>
+</li>
+<li><p>​    window.alert(“    你的名字是    “ +     name    );  </p>
+</li>
+<li></li>
+<li></li>
+<li><p>JavaScript    的数组的元素不一定是同一类型    .  </p>
+</li>
+<li><p>//    创建数组的另外一种方式  </p>
+</li>
+<li><p>var     my_list =     new     Array(1, 2, “three”, “four”);  </p>
+</li>
+<li><p>var     my_list_2 =     [    1,2,”three”,”four”    ]    ;   </p>
+</li>
+<li><p>​          //    是方括号    ,     不要与    C++    的大括号混淆    !  </p>
+</li>
+<li></li>
+<li><p>数组可以当栈或者队列  </p>
+</li>
+<li><p>var     colors =     new     Array();      </p>
+</li>
+<li><p>colors.    push    (“red”);  </p>
+</li>
+<li><p>colors.    push    (“blue”, “green”);  </p>
+</li>
+<li><p>alert(colors.length);       //3     </p>
+</li>
+<li><p>var     item = colors.    pop    ();      //green    </p>
+</li>
+<li><p>alert(colors.length);        //2    </p>
+</li>
+<li><p>//    如果应用为队列    ,     就使用    shift  </p>
+</li>
+<li><p>var     item = colors.    shift    ();       //    取第一个     其他平移一位  </p>
+</li>
+<li></li>
+</ul>
+<hr>
+<ul>
+<li></li>
+<li><p>不定参数的函数  </p>
+</li>
+<li><p>function     SayHi(){   </p>
+</li>
+<li><p>​     return     “Hello” +     arguments[0]     + “,” +     arguments    [1];   </p>
+</li>
+<li><p>}  </p>
+</li>
+<li><p>SayHi(“Tom”, “    你好    ?”);  </p>
+</li>
+<li><p>SayHi(“Jack”);  </p>
+</li>
+<li><p>SayHi(“Jack”, “    再见    “, “    其他    “);  </p>
+</li>
+</ul>
+<hr>
+<ul>
+<li></li>
+<li><p>表单验证函数  </p>
+</li>
+<li><p>​    onsubmit    函数可以用作验证用户输入数据的合法性  </p>
+</li>
+<li><p><strong>function</strong> <strong>CheckData**</strong>(thisForm) {**</p>
+</li>
+<li><p>​    <strong>if</strong> <strong>(thisForm.**</strong>data<strong>**.value != “”)</strong> </p>
+</li>
+<li><p>​     <strong>return</strong> <strong>true**</strong>;**    </p>
+</li>
+<li><p>​    <strong>else</strong> <strong>{</strong></p>
+</li>
+<li><p>​     <strong>alert(“**</strong>没有输入<strong>**”);</strong></p>
+</li>
+<li><p>​     <strong>return</strong> <strong>false**</strong>;**</p>
+</li>
+<li><p>​    <strong>}</strong>  </p>
+</li>
+<li><p><strong>}</strong></p>
+</li>
+<li><hr>
+</li>
+<li><hr>
+</li>
+<li><p><strong><strong>onsubmit</strong></strong>=”<strong><strong>return CheckData(this);</strong></strong>“&gt;**</p>
+</li>
+<li><p><strong><strong>提交</strong></strong>“/&gt; **</p>
+</li>
+<li><hr>
+</li>
+<li><hr>
+</li>
+<li></li>
+<li><p><strong>onsubmit**</strong>属性写** <strong>return</strong> <strong>函数（**</strong>this<strong><strong>）</strong></strong>;** <strong>要有分号</strong> <strong>this**</strong>表示这个表单**</p>
+</li>
+<li><p><strong>函数要写**</strong>return true<strong><strong>和</strong></strong>false**</p>
+</li>
+<li><p><strong>————————————————————————————</strong></p>
+</li>
+<li><p><strong>Set**</strong>和<strong>**Map</strong></p>
+</li>
+<li></li>
+<li><p><strong>var</strong> <strong>items</strong> <strong>= new</strong> <strong>Set**</strong>([1, 2, 3, 4, 5, 5, 5, 5]);** </p>
+</li>
+<li><p><strong>items.**</strong>add<strong><strong>(5);</strong></strong>//<strong>**重复的不会重复添加</strong></p>
+</li>
+<li><p><strong>items.**</strong>add<strong>**(10);</strong></p>
+</li>
+<li><p><strong>for (i of items) {</strong></p>
+</li>
+<li><p><strong>console.log(i);</strong></p>
+</li>
+<li><p><strong>}</strong>           <strong>//</strong> <strong>在控制台输出**</strong>1 2 3 4 5 10**</p>
+</li>
+<li><p><strong>alert(items.size)</strong>   <strong>//6</strong></p>
+</li>
+<li></li>
+<li><p><strong>var map = new</strong> <strong>Map**</strong>();**</p>
+</li>
+<li><p><strong>map.**</strong>set<strong><strong>(‘foo’, 123);     alert(map.</strong></strong>get<strong>**(‘foo’));</strong>    <strong>//123</strong></p>
+</li>
+<li><p><strong>alert(map.**</strong>has<strong>**(‘foo’));</strong>   <strong>//true</strong> <strong>alert(map.**</strong>delete<strong>**(‘foo’));</strong>  <strong>//true</strong></p>
+</li>
+<li><p><strong>——————————————-</strong></p>
+</li>
+<li><ul>
+<li><strong>console.log()**</strong>在控制台输出来调试**</li>
+</ul>
+</li>
+<li><ul>
+<li><strong>—————————————————-</strong></li>
+</ul>
+</li>
+<li><p><strong><strong>onclick</strong></strong>=”alert(‘<strong><strong>你点击了我</strong></strong>‘);”/&gt;**</p>
+</li>
+<li><p><strong><strong>onclick</strong></strong>=”<strong><strong>myfunction</strong></strong>();”/&gt;**</p>
+</li>
+<li><p><strong><strong>onclick</strong></strong>=”<strong><strong>myfunction</strong></strong>();”/&gt;**</p>
+</li>
+<li><p><strong><strong>onclick</strong></strong>=”<strong><strong>myfunction</strong></strong>();”&gt;<strong><strong>表格文字**</strong></strong></p>
+</li>
+<li><p><strong>超链接****</strong></p>
+</li>
+<li></li>
+<li></li>
+<li><p><strong>还可以通过代码绑定事件</strong></p>
+</li>
+<li><p><strong>…</strong></p>
+</li>
+<li><p><strong><strong>myButton</strong></strong>“/&gt;**</p>
+</li>
+<li><p><strong>…</strong></p>
+</li>
+<li><p><strong>var obj = document.getElementById(“**</strong>myButton<strong>**”);</strong></p>
+</li>
+<li><p><strong>obj.**</strong>onclick** <strong>=</strong> <strong>myFunction**</strong>;<strong><strong>//</strong></strong>只写函数名**</p>
+</li>
+<li><p><strong>function</strong> <strong>myFunction**</strong>(){ … }**  </p>
+</li>
+<li><hr>
+</li>
+<li><ul>
+<li><strong>采用代码绑定事件时</strong> <strong>代码必须放在绑定的元素后面</strong> <strong>不能放在</strong> <strong>head**</strong>里面或者<strong><strong>body</strong></strong>前**</li>
+</ul>
+</li>
+<li></li>
+<li><p><strong>使用属性绑定事件函数时就可以将**</strong>js<strong><strong>的代码放在</strong></strong>head<strong>**中</strong></p>
+</li>
+<li><p><strong>—————————————————-</strong></p>
+</li>
+<li><p><strong>下拉框联动</strong></p>
+</li>
+<li><p><strong><strong>province</strong></strong>“** <strong>onchange**</strong>=”<strong><strong>ChangeProvince</strong></strong>();”&gt;**</p>
+</li>
+<li></li>
+<li><p><strong>-**</strong>请选择<strong>**-</strong> <strong>//**</strong>第一行默认的为请选择** <strong>“0”</strong></p>
+</li>
+<li><p><strong><strong>直辖市</strong></strong>“&gt;<strong><strong>直辖市**</strong></strong></p>
+</li>
+<li><p><strong><strong>广东</strong></strong>“&gt;<strong><strong>广东**</strong></strong></p>
+</li>
+<li><p><strong><strong>广西</strong></strong>“&gt;<strong><strong>广西**</strong></strong></p>
+</li>
+<li><p><strong><strong>湖南</strong></strong>“&gt;<strong><strong>湖南**</strong></strong></p>
+</li>
+<li><p><strong><strong>湖北</strong></strong>“&gt;<strong><strong>湖北**</strong></strong></p>
+</li>
+<li><p><strong><strong>山东</strong></strong>“&gt;<strong><strong>山东**</strong></strong></p>
+</li>
+<li><p><strong><strong>山西</strong></strong>“&gt;<strong><strong>山西**</strong></strong></p>
+</li>
+<li><p><strong><strong>河南</strong></strong>“&gt;<strong><strong>河南**</strong></strong></p>
+</li>
+<li><p><strong><strong>河北</strong></strong>“&gt;<strong><strong>河北**</strong></strong></p>
+</li>
+<li><hr>
+</li>
+<li></li>
+<li><p><strong><strong>city</strong></strong>“ name=”city”&gt;**</p>
+</li>
+<li><p><strong>-**</strong>请选择<strong>**-</strong></p>
+</li>
+<li><p><strong>**</strong>市** </p>
+</li>
+<li><p><strong>var data = [[“**</strong>北京<strong><strong>“,”</strong></strong>天津<strong><strong>“,”</strong></strong>上海<strong><strong>“,”</strong></strong>重庆<strong>**”],</strong></p>
+</li>
+<li><p>​       <strong>[“**</strong>广州<strong><strong>“,”</strong></strong>深圳<strong><strong>“,”</strong></strong>珠海<strong><strong>“,”</strong></strong>东莞<strong>**”],</strong></p>
+</li>
+<li><p>​       <strong>[“**</strong>挂林<strong><strong>“,”</strong></strong>柳州<strong><strong>“,”</strong></strong>南通<strong><strong>“,”</strong></strong>常州<strong>**”],</strong></p>
+</li>
+<li><p>​       <strong>[“**</strong>长沙<strong><strong>“,”</strong></strong>湘潭<strong><strong>“,”</strong></strong>龙岩<strong><strong>“,”</strong></strong>南平<strong>**”],</strong></p>
+</li>
+<li><p>​       <strong>[“**</strong>兰州<strong><strong>“,”</strong></strong>白银<strong><strong>“,”</strong></strong>定西<strong><strong>“,”</strong></strong>敦煌<strong>**”]];</strong> <strong>//**</strong>二维数组** <strong>5X4</strong></p>
+</li>
+<li><p><strong>function</strong> <strong>ChangeProvince**</strong>() {**</p>
+</li>
+<li><p><strong>var</strong> <strong>objProv</strong> <strong>= document.getElementById(“**</strong>province<strong>**”);</strong></p>
+</li>
+<li><p><strong>var</strong> <strong>objCity</strong> <strong>= document.getElementById(“**</strong>city<strong>**”);</strong></p>
+</li>
+<li><p><strong>var</strong> <strong>cities</strong> <strong>= data[objProv.**</strong>selectedIndex** <strong>- 1];</strong> <strong>//**</strong>被选择的下标<strong>**-1</strong> <strong>因为第一个为默认的请选择</strong></p>
+</li>
+<li><p><strong>objCity.length = 1;**</strong>//<strong>**只保留第一项</strong> <strong>改变长度只留下默认的请选择</strong></p>
+</li>
+<li><p><strong>for (var i = 0; i &lt; proCity.length; i++)</strong> </p>
+</li>
+<li><p><strong>objCity[i+1**</strong>] =** <strong>new Option**</strong>(cities[i], cities[i]);** <strong>//**</strong>前一项是显示字符串<strong>**,</strong> <strong>后一项是表单提交后的对应值</strong></p>
+</li>
+<li></li>
+<li><p><strong>}</strong></p>
+</li>
+<li><hr>
+</li>
+<li><p><strong>——————————————————</strong></p>
+</li>
+<li></li>
+<li></li>
+<li><p>使用name属性访问</p>
+</li>
+<li><p>document.myForm.turnItOn.value=”修改了按钮”;    </p>
+</li>
+<li></li>
+<li></li>
+<li><p>使用元素id属性访问</p>
+</li>
+<li><p>id是整个文档是唯一的, 不唯一则返回第一个对象</p>
+</li>
+<li><p>用法：document.getElementById(“XX”);</p>
+</li>
+<li></li>
+<li><p>复选/单选</p>
+</li>
+<li><p>var obj = document.getElementById(“myForm”).;</p>
+</li>
+<li><p>​    for (var i in obj.vehicles)</p>
+</li>
+<li><p>​     if (obj.vehicles[i].checked)</p>
+</li>
+<li><p>​      alert(“选中了” + obj.vehicles[i].value); </p>
+</li>
+<li></li>
+<li><p>在PHP下的复选/单选：</p>
+</li>
+<li><p>var obj = document.getElementById(“myForm”);</p>
+</li>
+<li><p>var vehicles = obj[“vehicles[]”];</p>
+</li>
+<li><p>for (var oo of vechiles)</p>
+</li>
+<li><p>​    if (oo.checked)</p>
+</li>
+<li><p>​     alert(“选中了” + oo.value);   </p>
+</li>
+<li></li>
+<li><form id="myForm" action="ch5_5.php">
+</li>
+<li><p>​       value=”car”/&gt;Car</p>
+</li>
+<li><p>​    &lt;input type=”checkbox” name=”vehicles[]” </p>
+</li>
+<li><p>​        value=”truck”/&gt;Truck</p>
+</li>
+<li><p>​    &lt;input type=”checkbox” name=”vehicles[]” </p>
+</li>
+<li><p>​       value=”bike”/&gt;Bike</p>
+</li>
+<li><p>​    &lt;input type=”button” value=”按钮” </p>
+</li>
+<li><p>​        onclick=”ButtonClick()”/&gt;</p>
+</li>
+<li></p>   
+</li>
+<li></form> 
+</li>
+<li><p>-——————————————————————————————-</p>
+</li>
+<li></li>
+<li><p><strong>JS**</strong>修改<strong><strong>CSS</strong></strong>样式**</p>
+</li>
+<li></li>
+<li><p>修改颜色</p>
+</li>
+<li><p><strong>**</strong>背景色<strong>**(background)</strong></p>
+</li>
+<li><p>​    **</p>
+</li>
+<li><p>​      <strong>onchange**</strong>=”<strong><strong>setColor</strong></strong>(‘<strong><strong>background</strong></strong>‘, this.value)”/&gt;**</p>
+</li>
+<li><hr>
+</li>
+<li><p><strong>**</strong>字体颜色<strong>**(foreground)</strong>    </p>
+</li>
+<li><p>​    **</p>
+</li>
+<li><p>​      <strong>onchange**</strong>=”<strong><strong>setColor</strong></strong>(‘<strong><strong>foreground</strong></strong>‘, this.value)”/&gt;**</p>
+</li>
+<li><hr>
+</li>
+<li><p><strong>function</strong> <strong>setColor**</strong>(<strong><strong>where</strong></strong>,** <strong>newColor**</strong>)<strong><strong>//where</strong></strong>是传入的一个参数** <strong>判断是修改前景还是背景</strong></p>
+</li>
+<li><p><strong>{</strong></p>
+</li>
+<li><p><strong>if (where == “background”)</strong></p>
+</li>
+<li><p><strong>document.body.style.**</strong>backgroundColor** <strong>= newColor;</strong></p>
+</li>
+<li><p><strong>else</strong></p>
+</li>
+<li><p><strong>document.body.style.**</strong>color** <strong>= newColor;</strong></p>
+</li>
+<li><p><strong>}</strong></p>
+</li>
+<li></li>
+<li></li>
+<li><p><strong>The state of <strong>wordText</strong></strong>“** </p>
+</li>
+<li><p>​    <strong>onmouseover</strong> <strong>= “this.style.color=’red’;**</strong>“&gt;xxxxxxxxxx**</p>
+</li>
+<li><p><strong>在标签事件属性里直接修改时</strong> <strong>单引号双引号的作用</strong></p>
+</li>
+<li></li>
+<li></li>
+<li><p><strong>event**</strong>对象**</p>
+</li>
+<li><p><strong>function</strong> <strong>FindIt**</strong>(<strong><strong>evt</strong></strong>)**   <strong>{</strong></p>
+</li>
+<li><p><strong>document.getElementById(“**</strong>xcoorl<strong>**”).value =</strong> <strong>evt**</strong>.clientX;**</p>
+</li>
+<li><p><strong>document.getElementById(“**</strong>ycoorl<strong>**”).value =</strong> <strong>evt**</strong>.clientY;**</p>
+</li>
+<li><p><strong>document.getElementById(“**</strong>xcoor2<strong>**”).value =</strong> <strong>evt**</strong>.screenX;**</p>
+</li>
+<li><p><strong>document.getElementById(“**</strong>ycoor2<strong>**”).value =</strong> <strong>evt**</strong>.screenY;**</p>
+</li>
+<li><p><strong>}</strong></p>
+</li>
+<li><p><strong><strong>onmousemove</strong></strong>=”<strong><strong>FindIt(event)</strong></strong>“&gt;**</p>
+</li>
+<li><p>​    <strong>x : <strong>xcoorl</strong></strong>“/&gt;**</p>
+</li>
+<li><p>​    <strong>y : <strong>ycoorl</strong></strong>“/&gt;  **</p>
+</li>
+<li><p>​    <strong>在系统屏幕区域的坐标**</strong>:  **</p>
+</li>
+<li><p>​    <strong>x : <strong>xcoor2</strong></strong>“/&gt;**</p>
+</li>
+<li><p>​    <strong>y : <strong>ycoor2</strong></strong>“/&gt;** </p>
+</li>
+<li><hr>
+</li>
+<li><ul>
+<li><strong>event**</strong>对象代表事件的状态，比如事件在其中发生的元素、键盘按键的状态、鼠标的位置、鼠标按钮的状态。**</li>
+</ul>
+</li>
+<li></li>
+<li><p><strong>定时器</strong></p>
+</li>
+<li><p><strong>1.setTimeout</strong></p>
+</li>
+<li><ul>
+<li><strong>形如：**</strong>tid =** <strong>setTimeout**</strong>(mover, 500);**</li>
+<li><strong>第**</strong>1<strong><strong>个参数是调用函数</strong></strong>,** <strong>第**</strong>2<strong><strong>个参数是间隔的时间</strong></strong>ms**</li>
+<li><strong>要停止定时器</strong> <strong>clearTimeout(tid)</strong></li>
+<li><strong>mover**</strong>为自定义函数名或匿名函数**</li>
+</ul>
+</li>
+<li></li>
+<li><p><strong>例子：定时移动一个文本的位置</strong></p>
+</li>
+<li><p><strong>var</strong> <strong>dom, finalx = 300, finaly = 300;**</strong>//<strong>**全局变量</strong></p>
+</li>
+<li><p><strong>function</strong> <strong>InitText**</strong>()**  <strong>{</strong></p>
+</li>
+<li><p><strong>dom = document.getElementById(“theText”).style;</strong></p>
+</li>
+<li><p><strong>var x = dom.left;</strong> <strong>//100px**</strong>的字符串形式**</p>
+</li>
+<li><p><strong>var y = dom.top;</strong>    </p>
+</li>
+<li><p><strong>x = x.substring(0, x.length-2);**</strong>//<strong>**截取前面的数字</strong></p>
+</li>
+<li><p><strong>y = y.substring(0, y.length-2);</strong>   </p>
+</li>
+<li><p><strong>MoveText**</strong>(x, y);**</p>
+</li>
+<li><p><strong>}</strong>   </p>
+</li>
+<li><p><strong>function</strong> <strong>MoveText**</strong>(x<strong>**, y)</strong> <strong>{</strong></p>
+</li>
+<li><p><strong>if (x != finalx)  x++;</strong>       </p>
+</li>
+<li><p><strong>if (y != finaly)  y++;</strong>       </p>
+</li>
+<li><p><strong>if ((x != finalx) || (y != finaly))</strong> <strong>{</strong></p>
+</li>
+<li><p>​    <strong>dom.left = x + “px”;</strong></p>
+</li>
+<li><p>​    <strong>dom.top = y + “px”;</strong></p>
+</li>
+<li><p>​    <strong>setTimeout**</strong>(function(){MoveText(x,y);}, 10);**</p>
+</li>
+<li><p><strong>}</strong></p>
+</li>
+<li><p><strong>}</strong></p>
+</li>
+<li></li>
+<li></li>
+<li><p><strong>2. setInterval</strong></p>
+</li>
+<li><ul>
+<li><strong>形如：**</strong>tID =** <strong>setInterval**</strong>(mover, 500);**</li>
+<li><strong>第**</strong>1<strong><strong>个参数是调用函数</strong></strong>,** <strong>第**</strong>2<strong><strong>个参数是间隔的时间</strong></strong>ms**</li>
+<li><strong>与**</strong>setTimeOut<strong><strong>区别</strong></strong>,** <strong>周期调用不停止</strong></li>
+<li><strong>要停止定时器：**</strong>clearInterval<strong>**(tID)</strong></li>
+</ul>
+</li>
+<li><p><strong><strong>停止</strong></strong>“**</p>
+</li>
+<li><p><strong>onclick**</strong>=”<strong><strong>clearInterval(tID);</strong></strong>“ /&gt;** <strong>//**</strong>这里传入<strong>**tID</strong> <strong>因为**</strong>JS<strong>**函数是写在文件里早就引入了</strong> <strong>文件里的**</strong>tID<strong>**是全局变量</strong></p>
+</li>
+<li><p><strong><strong>开始</strong></strong>“**</p>
+</li>
+<li><p>​    <strong>onclick**</strong>=”<strong><strong>tID=setInterval(</strong></strong>MoveText,20<strong><strong>);</strong></strong>“ /&gt;** </p>
+</li>
+<li></li>
+<li><p><strong>var finalx = 300, finaly = 300;  var</strong> <strong>tID**</strong>;<strong><strong>//</strong></strong>全局变量**</p>
+</li>
+<li><p><strong>function</strong> <strong>InitText**</strong>(){**</p>
+</li>
+<li><p><strong>tID</strong> <strong>=</strong> <strong>setInterval**</strong>(<strong><strong>MoveText</strong></strong>, 20);**    </p>
+</li>
+<li><p><strong>}</strong></p>
+</li>
+<li><p><strong>function</strong> <strong>MoveText**</strong>(){**   </p>
+</li>
+<li><p><strong>var</strong> <strong>dom</strong> <strong>= document.getElementById(“**</strong>theText<strong>**”).style;</strong></p>
+</li>
+<li><p><strong>var x = dom.left.match(/\d+/);</strong>    </p>
+</li>
+<li><p><strong>var y = dom.top.match(/\d+/);</strong></p>
+</li>
+<li><p><strong>if (x != finalx)  x++;</strong>      </p>
+</li>
+<li><p><strong>if (y != finaly)  y++;</strong>       </p>
+</li>
+<li><p><strong>if ((x != finalx) || (y != finaly))</strong>  <strong>{</strong></p>
+</li>
+<li><p><strong>dom.left = x + “px”;</strong></p>
+</li>
+<li><p><strong>dom.top  = y + “px”;</strong>   </p>
+</li>
+<li><p><strong>}</strong> <strong>//**</strong>不需要要重新调用<strong>**setTimeOut</strong></p>
+</li>
+<li><p><strong>else</strong></p>
+</li>
+<li><p><strong>clearInterval**</strong>(tID);**</p>
+</li>
+<li><p><strong>}</strong>   <strong>//**</strong>要记得停止定时器**</p>
+</li>
+<li></li>
+<li><ul>
+<li><strong>offsetLeft**</strong>与<strong><strong>offsetTop(</strong></strong>只读属性<strong>**)</strong></li>
+</ul>
+</li>
+<li><p><strong>对应**</strong>obj.style.Left<strong><strong>与</strong></strong>obj.style.Top**</p>
+</li>
+<li><p><strong>但不需截取字符**</strong>“px”**</p>
+</li>
+<li></li>
+<li><p><strong>获取原来位置的时候可以用</strong></p>
+</li>
+<li><p><strong>但是设置新的位置的时候还是设置**</strong>left top** <strong>并且加上**</strong>“px”**</p>
+</li>
+<li></li>
+<li></li>
+<li><p><strong>实例**</strong>:<strong>**百度百科折叠实例</strong></p>
+</li>
+<li><hr>
+</li>
+<li><p><strong>**</strong>简介<strong>**</strong></p>
+</li>
+<li><p><strong>**</strong>分类**</p>
+</li>
+<li><p><strong><strong>ol1</strong></strong>“&gt;**</p>
+</li>
+<li><p>​    <strong>**</strong>线性动规<strong>**</strong></p>
+</li>
+<li><p>​    <strong>**</strong>区域动规<strong>**</strong></p>
+</li>
+<li><p>​    <strong>**</strong>树形动规<strong>**</strong></p>
+</li>
+<li><p>​    <strong>**</strong>背包问题<strong>**</strong> </p>
+</li>
+<li><hr>
+</li>
+<li><hr>
+</li>
+<li><p><strong>**</strong>概念及意义<strong>**</strong></p>
+</li>
+<li><p><strong>**</strong>基本模型<strong>**</strong></p>
+</li>
+<li><p><strong>**</strong>基本思想<strong>**</strong></p>
+</li>
+<li><p><strong><strong>ddHide</strong></strong>“&gt;<strong><strong>适用条件**</strong></strong></p>
+</li>
+<li><p><strong><strong>ddHide</strong></strong>“&gt;<strong>**作用</strong></p>
+</li>
+<li><p><strong><strong>ol2</strong></strong>“&gt;<strong><strong>记忆化搜索**</strong></strong></p>
+</li>
+<li><p>​    <strong>**</strong>决策<strong>**</strong></p>
+</li>
+<li><p>​    <strong>**</strong>状态**** **</p>
+</li>
+<li><hr>
+</li>
+<li><p><strong><strong>ddHide</strong></strong>“&gt;<strong><strong>应用**</strong></strong></p>
+</li>
+<li><p><strong><strong>ddHide</strong></strong>“&gt;<strong><strong>程序实现**</strong></strong> </p>
+</li>
+<li><hr>
+</li>
+<li><hr>
+</li>
+<li></li>
+<li><p><strong>*  {margin:0px; padding:0px;</strong> </p>
+</li>
+<li><p>​    <strong>color:#136EC2}</strong></p>
+</li>
+<li><p><strong>.ddHide</strong> <strong>{**</strong>display:none<strong>**;}</strong> <strong>//**</strong>这里放在第二个**</p>
+</li>
+<li><p><strong>#container {width:246px;</strong> </p>
+</li>
+<li><p>​    <strong>border:1px #DEDFE1 solid;</strong></p>
+</li>
+<li><p>​    <strong>font-size:14px; position:relative;}</strong></p>
+</li>
+<li><p><strong>dd  {background-image:url(list-dot.gif);</strong></p>
+</li>
+<li><p>​    <strong>background-position:0 8x;}</strong></p>
+</li>
+<li><p><strong>li  {background-image:url(bgs3.png);</strong></p>
+</li>
+<li><p>​    <strong>background-position:2px -327px;</strong></p>
+</li>
+<li><p>​    <strong>background-repeat:no-repeat;}</strong></p>
+</li>
+<li><p><strong>ol</strong> <strong>{**</strong>display:none<strong>**;}</strong> </p>
+</li>
+<li><p><strong>#holder</strong> <strong>{background-image:url(dir_arr.gif);</strong></p>
+</li>
+<li><p>​      <strong>background-position:35px -44px;</strong></p>
+</li>
+<li><p>​      <strong>width:50px; cursor:pointer;**</strong>//pointer** <strong>鼠标移动到这里变成一个手指</strong></p>
+</li>
+<li></li>
+<li></li>
+<li></li>
+<li><p>​      <strong>position:relative**</strong>;**</p>
+</li>
+<li><p>​      <strong>left:180px;}</strong></p>
+</li>
+<li><hr>
+</li>
+<li></li>
+<li><p><strong>document.getElementById(“**</strong>holder<strong><strong>“).</strong></strong>onclick** <strong>=</strong> <strong>Expand**</strong>;**   </p>
+</li>
+<li><p><strong>function</strong> <strong>Expand() {</strong></p>
+</li>
+<li><p><strong>var obj = document.getElementById(“holder”);</strong></p>
+</li>
+<li><p><strong>if (document.styleSheets[0].**</strong>cssRules<strong>**)</strong> <strong>//**</strong>浏览器支持不同**</p>
+</li>
+<li><p>​    <strong>var</strong> <strong>oRule</strong> <strong>= document.styleSheets[0].cssRules[1];**</strong>//FireFox**</p>
+</li>
+<li><p><strong>//**</strong>表示前面放的<strong><strong>CSS</strong></strong>样式的第二个** <strong>.ddHide</strong> <strong>{**</strong>display:none<strong>**;}</strong> </p>
+</li>
+<li><p><strong>else if (document.styleSheets[0].**</strong>rules<strong>**)</strong></p>
+</li>
+<li><p>​    <strong>var</strong> <strong>oRule</strong> <strong>= document.styleSheets[0].rules[1];**</strong>//IE**</p>
+</li>
+<li><p><strong>if (obj.innerHTML == “**</strong>展开<strong>**”) {</strong></p>
+</li>
+<li><p>​    <strong>document.getElementById(“**</strong>ol1<strong><strong>“).style.</strong></strong>display=”block”<strong>**;</strong></p>
+</li>
+<li><p>​    <strong>document.getElementById(“**</strong>ol2<strong><strong>“).style.</strong></strong>display=”block”<strong>**;</strong></p>
+</li>
+<li><p>​    <strong>obj.innerHTML = “**</strong>收起<strong>**”;</strong>   </p>
+</li>
+<li><p>​     <strong>obj.style.backgroundPosition=”35px -15px”;</strong> </p>
+</li>
+<li><p>​    <strong>oRule**</strong>.style.<strong><strong>display=”block”</strong></strong>;** </p>
+</li>
+<li><p><strong>}</strong></p>
+</li>
+<li><p><strong>else {</strong></p>
+</li>
+<li><p>​    <strong>document.getElementById(“**</strong>ol1<strong><strong>“).</strong></strong>style.display=”none”<strong>**;</strong></p>
+</li>
+<li><p>​    <strong>document.getElementById(“**</strong>ol2<strong><strong>“).</strong></strong>style.display=”none”<strong>**;</strong></p>
+</li>
+<li><p>​    <strong>obj.innerHTML = “**</strong>展开<strong>**”;</strong></p>
+</li>
+<li><p>​    <strong>obj.style.backgroundPosition = “35px -44px”;</strong>    </p>
+</li>
+<li><p>​    <strong>oRule**</strong>.style.<strong><strong>display=”none”</strong></strong>;**</p>
+</li>
+<li><p><strong>}</strong></p>
+</li>
+<li><p><strong>}</strong></p>
+</li>
+<li><hr>
+</li>
+<li></li>
+<li><p><strong>树形目录框实例：</strong></p>
+</li>
+<li><hr>
+</li>
+<li><p><strong>&lt;**</strong>div** <strong>onclick**</strong>=”<strong><strong>ShowTree</strong></strong>(‘gd’)<strong>**”&gt;</strong></p>
+</li>
+<li><p>​     <strong><strong>span_gd</strong></strong>“&gt;+ <strong>**广东</strong></p>
+</li>
+<li><p>​     ****</p>
+</li>
+<li><p>​     <strong><strong>city_gd</strong></strong>“&gt;**</p>
+</li>
+<li><p>​      <strong>- [</strong>](#)<strong>广州****</strong></p>
+</li>
+<li><p>​      <strong>- [</strong>](#)<strong>深圳****</strong></p>
+</li>
+<li><p>​      <strong>- [</strong>](#)<strong>珠海****</strong></p>
+</li>
+<li><p>​     ****</p>
+</li>
+<li><hr>
+</li>
+<li><p><strong>&lt;**</strong>div** <strong>onclick**</strong>=”<strong><strong>ShowTree</strong></strong>(<strong><strong>‘gx</strong></strong>‘)”&gt;**</p>
+</li>
+<li><p>​     <strong><strong>span_gx</strong></strong>“&gt;+ <strong><strong>广西</strong></strong>&gt;**</p>
+</li>
+<li><p>​     ****</p>
+</li>
+<li><p>​     <strong><strong>city_gx</strong></strong>“&gt;**</p>
+</li>
+<li><p>​      <strong>- [</strong>](#)<strong>南宁****</strong></p>
+</li>
+<li><p>​      <strong>- [</strong>](#)<strong>桂林****</strong></p>
+</li>
+<li><p>​     ****</p>
+</li>
+<li><hr>
+</li>
+<li><hr>
+</li>
+<li><hr>
+</li>
+<li></li>
+<li></li>
+<li><p><strong>* {margin:0px; padding:0px;}</strong></p>
+</li>
+<li><p><strong>li {**</strong>list-style:none<strong>**;</strong> </p>
+</li>
+<li><p>​    <strong>cursor:pointer;</strong></p>
+</li>
+<li><p>​    <strong>padding:5px 0px 5px 12px;}</strong></p>
+</li>
+<li><p><strong>#main div {cursor:pointer;</strong> </p>
+</li>
+<li><p>​       <strong>color:blue;}</strong></p>
+</li>
+<li><p><strong>#main ul li ul {**</strong>display:none<strong>**;}</strong></p>
+</li>
+<li><p><strong>#main {width:300px; height:250px;</strong></p>
+</li>
+<li><p>​     <strong>overflow:scroll**</strong>;<strong><strong>//</strong></strong>总是显示滚动条**</p>
+</li>
+<li><p>​     <strong>margin:50px auto;</strong></p>
+</li>
+<li><p>​     <strong>border:double;}</strong></p>
+</li>
+<li><p><strong>.spanName {text-decoration:underline;}</strong></p>
+</li>
+<li><hr>
+</li>
+<li></li>
+<li><p><strong>function ShowTree(strKey)</strong></p>
+</li>
+<li><p><strong>{</strong></p>
+</li>
+<li><p><strong>var objUL = document.**</strong>getElementById<strong>**(“city_” + strKey);</strong></p>
+</li>
+<li><p><strong>var objSpan = document.getElementById(“span_” + strKey);</strong></p>
+</li>
+<li><p><strong>//var objUL = document.getElementById(“city_gd”);</strong></p>
+</li>
+<li><p><strong>if (objUL.style.display == “none”</strong> </p>
+</li>
+<li><p>​    <strong>|| objUL.style.display == “”)</strong></p>
+</li>
+<li><p><strong>{</strong>        </p>
+</li>
+<li><p>​    <strong>objSpan.**</strong>innerHTML** <strong>= “- “;</strong>        </p>
+</li>
+<li><p>​    <strong>objUL.style.**</strong>display** <strong>= “block”;</strong>   </p>
+</li>
+<li><p><strong>}</strong></p>
+</li>
+<li><p><strong>else</strong> <strong>//**</strong>能展开也要能合上**</p>
+</li>
+<li><p><strong>{</strong>        </p>
+</li>
+<li><p>​    <strong>objSpan.**</strong>innerHTML** <strong>= “+ “;</strong></p>
+</li>
+<li><p>​    <strong>objUL.style.**</strong>display** <strong>= “none”;</strong></p>
+</li>
+<li><p><strong>}</strong></p>
+</li>
+<li><p><strong>}</strong></p>
+</li>
+<li></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/16/%E5%88%9B%E5%BB%BA%E5%9F%BA%E4%BA%8EJS%E7%9A%84%E6%B0%B4%E5%B9%B3%E5%AF%BC%E8%88%AA%E4%B8%8B%E6%8B%89%E8%8F%9C%E5%8D%95-%E8%BD%AC/" rel="next" title="创建基于JS的水平导航下拉菜单(转)">
+                <i class="fa fa-chevron-left"></i> 创建基于JS的水平导航下拉菜单(转)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/16/Spring%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8-%E8%BD%AC/" rel="prev" title="Spring快速入门(转)">
+                Spring快速入门(转) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+						<a href="/">
+              <img class="site-author-image" itemprop="image"
+                src="https://s2.ax1x.com/2019/12/16/Q4NvnI.jpg"
+                alt="Zyfgoup" />
+								</a>
+            
+              <p class="site-author-name" itemprop="name">Zyfgoup</p>
+              <p class="site-description motion-element" itemprop="description">满船清梦压星河</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Zyfgoup" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zyfgoup</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      访问总量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
